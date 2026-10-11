@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="papaya.css">
+    <link rel="icon" type="image" href="img/test.jpg">
+    <title>Contactos</title>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <div class="logo">
+                <img src="img/test.jpg" alt="Logo">
+                <h1>Lorem</h1>
+            </div>
+            <nav class="buttons">
+                <a href="index.html">Inicio</a>
+                <a href="#">Opción 2</a>
+                <a href="#">Opción 3</a>
+                <a href="#">Contactos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-main">
+        <h2>Usuarios Registrados</h2>
+        <div class="table-container">
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="imgbottom">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/ig.png" alt="Instagram">
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/yt.png" alt="YouTube">
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/fb.png" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tableBody = document.querySelector("#userTable tbody");
+            const memorydata = JSON.parse(localStorage.getItem("userData")) || [];
+
+            if (memorydata.length === 0) {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td colspan="2" style="text-align: center;">No hay usuarios registrados aún.</td>`;
+                tableBody.appendChild(row);
+            } else {
+                memorydata.forEach(user => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${escapeHtml(user.name)}</td>
+                        <td>${escapeHtml(user.email)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        });
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>

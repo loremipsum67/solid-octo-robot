@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <link rel="stylesheet" href="papaya.css">
+    <link rel="icon" type="image" href="img/test.jpg">
+    <title>Lorem</title>
+    <script>
+        function gotoslide(index){
+            const slides = document.querySelector('.slides');
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <div class="logo">
+                <img src="img/test.jpg" alt="">
+                <h1>Lorem</h1>
+            </div>
+            <div class="buttons">
+                <a href="#">Inicio</a>
+                <a href="#">Opción 2</a>
+                <a href="#">Opción 3</a>
+                <a href="contact.html">Contactos</a>
+            </div>
+        </div>
+        <div class="bottom-header">
+            <div class="slider-container">
+                <div class="slides">
+                    <img src="img/slider/a (1).jpg" alt="">
+                    <img src="img/slider/a (2).jpg" alt="">
+                    <img src="img/slider/a (3).jpg" alt="">
+                    <img src="img/slider/a (4).jpg" alt="">
+                </div>
+                <div class="buttonslide">
+                    <button onclick="gotoslide(0)"></button>
+                    <button onclick="gotoslide(1)"></button>
+                    <button onclick="gotoslide(2)"></button>
+                    <button onclick="gotoslide(3)"></button>
+                </div>
+            </div>
+            <div class="recomendaciones">
+                <div class="label">
+                    <img src="img/slider/sb/b (4).jpg">
+                    <p>Label</p>
+                </div>
+                <div class="label">
+                    <img src="img/slider/sb/b (3).jpg">
+                    <p>Label</p>
+                </div>
+                <div class="label">
+                    <img src="img/slider/sb/b (2).jpg">
+                    <p>Label</p>
+                </div>
+                <div class="label">
+                    <img src="img/slider/sb/b (1).jpg">
+                    <p>Label</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <article>
+        <h3>NOTICIAS</h3>
+        <div class="articulo">
+            <img src="img/slider/sb/b (1).jpg">
+            <div class="heading">
+                <h4>LOREM</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, tempora repellat ipsam sequi accusamus vitae illum optio tempore facere neque cupiditate cumque maxime a delectus quo eaque iure possimus! Quidem fuga ad est reprehenderit necessitatibus dignissimos amet rerum deleniti neque.</p>
+            </div>
+        </div>
+        <div class="articulo">
+            <div class="heading">
+                <h4>LOREM</h4>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit facilis tempora ad repellendus modi! Provident molestiae temporibus minima error eligendi repudiandae aut! Labore, rem. Culpa similique, doloribus expedita laborum quas dolor voluptatum id, quis fugit est modi odio a? Vero?</p>
+            </div>
+            <img src="img/slider/sb/b (2).jpg">
+        </div>
+        <div class="articulo">
+            <img src="img/slider/sb/b (3).jpg">
+            <div class="heading">
+                <h4>LOREM</h4>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, dicta dolorem vero cupiditate porro beatae facilis molestiae debitis, quisquam error voluptatibus quae perspiciatis molestias veritatis hic ut. Et quis, dolores quia exercitationem impedit illo consequatur deleniti repudiandae nobis tempora cupiditate!</p>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <form id="registerForm">
+            <fieldset>
+                <h3>REGÍSTRATE</h3>
+                <div id="realforum">
+                    <input type="text" id="name" placeholder="Nombre" required>
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit" id="sendbutton">Enviar</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="imgbottom">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/ig.png">
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/yt.png">
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/fb.png">
+            </a>
+        </div>
+        <p></p>
+    </footer>
+    
+    <script>
+        const form = document.querySelector("#registerForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const userData = { name, email, password };
+            
+            const memorydata = JSON.parse(localStorage.getItem("userData")) || [];
+            memorydata.push(userData);
+            localStorage.setItem("userData", JSON.stringify(memorydata));
+
+            alert('Data successfully saved to localStorage!');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
