@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img/test.jpg">
+    <title>Lorem</title>
+    <script>
+        function gotoslide(index){
+            const slides = document.querySelector('.slides');
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="first-header">
+            <img src="img/test.jpg" alt="">
+            <h1>Lorem</h1>
+        </div>
+        <div class="second-header">
+            <nav class="buttons">
+                <a href="#">Opción 1</a>
+                <a href="#">Opción 2</a>
+                <a href="#">Opción 3</a>
+                <a href="#">Opción 4</a>
+            </nav>
+            <div class="slider-container">
+                <div class="slides">
+                    <img src="img/slider/a (1).jpg" alt="">
+                    <img src="img/slider/a (2).jpg" alt="">
+                    <img src="img/slider/a (3).jpg" alt="">
+                    <img src="img/slider/a (4).jpg" alt="">
+                </div>
+                <div class="buttonslide">
+                    <button onclick="gotoslide(0)"></button>
+                    <button onclick="gotoslide(1)"></button>
+                    <button onclick="gotoslide(2)"></button>
+                    <button onclick="gotoslide(3)"></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="aaa">
+        <iframe src="https://www.youtube.com/embed/il_t1WVLNxk" allowfullscreen></iframe>
+        <div class="texto">
+            <h3>Papaya</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores assumenda cum tenetur labore corporis accusantium quam ut officia molestiae dignissimos provident tempora, sit facere debitis pariatur voluptatum? Pariatur, iure in!</p>
+        </div>
+    </div>
+
+    <div class="bbb">
+        <div class="publicidad">
+            <h4>PUBLICIDAD</h4>
+            <img src="img/test.jpg" alt="">
+        </div>
+        <form id="registerForm">
+            <fieldset>
+                <h3>REGÍSTRATE</h3>
+                <div id="realforum">
+                    <input type="text" id="name" placeholder="Nombre" required>
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit" id="sendbutton">Enviar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <footer>
+        <div class="textobottom">
+            <h5>&copy; 2026</h5>
+            <h5>Correo: lorem@ipsum.com</h5>
+            <h5>Página web: loremipsum.com</h5>
+        </div>
+        <div class="imgbottom">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/ig.png">
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/yt.png">
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/logo/fb.png">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.querySelector("#registerForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const userData = { name, email, password };
+            
+            const memorydata = JSON.parse(localStorage.getItem("userData")) || [];
+            memorydata.push(userData);
+            localStorage.setItem("userData", JSON.stringify(memorydata));
+
+            alert('Data successfully saved to localStorage!');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
